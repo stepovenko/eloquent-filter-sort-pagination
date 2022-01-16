@@ -1,0 +1,35 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Builder;
+use Stepovenko\FilterableAndSortable\Filters\QueryFilter;
+
+class {{ class }} extends QueryFilter
+{
+    /**
+     * @return array
+     */
+    public function getFilterableFields(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return array
+     */
+    public function getSortableFields(): array
+    {
+        return [];
+    }
+
+    /**
+     * @param $term
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function name($term): Builder
+    {
+        return $this->builder->where('name', 'LIKE', "$term%");
+    }
+}

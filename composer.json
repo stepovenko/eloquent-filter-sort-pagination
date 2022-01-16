@@ -1,0 +1,39 @@
+{
+    "name": "stepovenko/eloquent-filter-sort-pagination",
+    "description": "For filtering and sorting in eloquent",
+    "keywords": [
+        "laravel",
+        "eloquent",
+        "model",
+        "search",
+        "query",
+        "filter",
+        "sort",
+        "pagination"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stepovenko Denis",
+            "email": "stepovenko.denis@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "laravel/framework": "^8.40"
+    },
+    "autoload": {
+        "psr-4": {
+            "Stepovenko\\FilterableAndSortable\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Stepovenko\\FilterableAndSortable\\Providers\\FilterableAndSortableProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
