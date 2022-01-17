@@ -11,6 +11,7 @@
         "sort",
         "pagination"
     ],
+    "version": "1.0.0",
     "license": "MIT",
     "authors": [
         {
@@ -19,7 +20,7 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.2 || ^8.0",
         "illuminate/console": "~6.0|~7.0|~8.0",
         "illuminate/filesystem": "~6.0|~7.0|~8.0",
         "illuminate/database": "~6.0|~7.0|~8.0",
