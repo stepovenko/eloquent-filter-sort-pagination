@@ -77,6 +77,10 @@ use Stepovenko\FilterableAndSortable\Filters\QueryFilter;
 
 class ProductFilter extends QueryFilters
 {
+    protected string $defaultSort = 'price-asc';
+    protected int $maxPerPage = 100;
+    protected int $defaultPerPage = 15;
+
     public function getSortableFields(): array
     {
         return ['category_name'];
@@ -93,6 +97,29 @@ class ProductFilter extends QueryFilters
     {
         $this->builder->where('category.name', 'LIKE', "%$term%");
     }
+}
+```
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Filters\ProductFilter;
+use App\Models\Product;
+
+class ProductController extends Controller
+{
+
+    public function index(ProductFilter $productFilter)
+    {
+        // internal public methods
+        $productFilter->setDefaultSort('price-desc');
+        $perPega = $productFilter->getPerPage();
+        $request = $productFilter->getRequest();
+        $builder = $productFilter->getBuilder();
+    }
+
 }
 ```
 
