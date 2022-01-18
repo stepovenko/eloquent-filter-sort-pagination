@@ -1,8 +1,9 @@
 # Laravel eloquent Filter, Sort and Paginate
 
-Simple filtering and sorting of data in Eloquent uses query parameters for example
+## Simple filtering and sorting of data in Eloquent uses query parameters for example
 
-`?sort=price-desc&name=iphone`
+### `https://example.com?sort=price-desc&name=iphone`
+
 
 ```php
 <?php
