@@ -62,7 +62,7 @@ class ProductFilter extends QueryFilters
 
     public function name($term)
     {
-        $this->builder->where('tokens.name', 'LIKE', "%$term%");
+        $this->builder->where('products.name', 'LIKE', "%$term%");
     }
 }
 ```
