@@ -18,7 +18,7 @@ return [
      *
      * public function sort_categories_name($term){};
      */
-    'sort_function_prefix' => 'sort_',
+    'sort_method_prefix' => 'sort_',
 
     /*
      * Query param name
