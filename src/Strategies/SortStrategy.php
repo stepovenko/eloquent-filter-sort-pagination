@@ -60,8 +60,8 @@ class SortStrategy implements SortStrategyContract
             }
 
             $methodName = config('filterable-and-sortable.sort_function_prefix') . $fieldName;
-            if (method_exists($this, $methodName)) {
-                $this->$methodName($direction);
+            if (method_exists($this->queryFilters, $methodName)) {
+                $this->queryFilters->$methodName($direction);
             } else {
                 if (in_array($fieldName, $this->queryFilters->getSortableFieldsLikeNumber())) {
                     $this->builder->orderByRaw("case when `$fieldName` is null then 1 else 0 end, `$fieldName` * 1 $direction");

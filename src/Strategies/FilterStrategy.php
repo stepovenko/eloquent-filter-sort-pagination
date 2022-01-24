@@ -35,17 +35,16 @@ class FilterStrategy implements FilterStrategyContract
     {
         $this->init($queryFilters);
         $filterableFields = $this->getFilterableFieldsFromRequest();
-
         foreach ($filterableFields as $name => $value) {
-            if (!method_exists($this, $name)) {
+            if (!method_exists($this->queryFilters, $name)) {
                 return;
             } else {
                 $this->defaultFilter($name, $value);
             }
             if (strlen($value)) {
-                $this->$name($value);
+                $this->queryFilters->$name($value);
             } else {
-                $this->$name();
+                $this->queryFilters->$name();
             }
         }
     }
