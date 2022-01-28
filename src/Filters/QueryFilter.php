@@ -36,11 +36,6 @@ abstract class QueryFilter
     protected string $defaultSort = '';
 
     /**
-     * @var bool
-     */
-    private bool $isSortFromRequest = true;
-
-    /**
      * @var int
      */
     protected int $maxPerPage = 100;
@@ -68,19 +63,10 @@ abstract class QueryFilter
     {
         $this->builder = $builder;
 
-        $this->defaultSort();
         $this->sortStrategy->handle($this);
         $this->filterStrategy->handle($this);
 
         return $this->builder;
-    }
-
-    protected function defaultSort()
-    {
-        if (!$this->request->sort && $this->defaultSort) {
-            $this->isSortFromRequest = false;
-            $this->request->request->add([config('filterable-and-sortable.sort_field_name') => $this->defaultSort]);
-        }
     }
 
     /**
@@ -96,7 +82,7 @@ abstract class QueryFilter
      */
     public function setDefaultSort(string $sort = null)
     {
-        if ($sort && !$this->isSortFromRequest) {
+        if ($sort && !$this->request->config('filterable-and-sortable.sort_field_name')) {
             $this->request->request->add([config('filterable-and-sortable.sort_field_name') => $sort]);
         }
     }
