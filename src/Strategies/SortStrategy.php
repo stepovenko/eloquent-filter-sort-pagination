@@ -59,7 +59,7 @@ class SortStrategy implements SortStrategyContract
                 $direction = 'DESC';
             }
 
-            $methodName = config('filterable-and-sortable.sort_function_prefix') . $fieldName;
+            $methodName = config('filterable-and-sortable.sort_method_prefix') . $fieldName;
             if (method_exists($this->queryFilters, $methodName)) {
                 $this->queryFilters->$methodName($direction);
             } else {
