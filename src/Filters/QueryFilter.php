@@ -75,6 +75,9 @@ abstract class QueryFilter
         return $this->builder;
     }
 
+    /**
+     * @return void
+     */
     protected function defaultSort()
     {
         if (!$this->request->sort && $this->defaultSort && !$this->isChangeDefaultSort) {
