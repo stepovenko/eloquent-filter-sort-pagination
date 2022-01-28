@@ -82,7 +82,7 @@ abstract class QueryFilter
      */
     public function setDefaultSort(string $sort = null)
     {
-        if ($sort && !$this->request->config('filterable-and-sortable.sort_field_name')) {
+        if ($sort && !$this->request->{config('filterable-and-sortable.sort_field_name')}) {
             $this->request->request->add([config('filterable-and-sortable.sort_field_name') => $sort]);
         }
     }
