@@ -1,9 +1,10 @@
 # Laravel eloquent Filter, Sort and Paginate
 
-## Simple filtering and sorting of data in Eloquent uses query parameters for example
+### Simple filtering and sorting of data in Eloquent uses query parameters for example
 
-### `https://example.com?sort=price-desc&name=iphone`
+# Simple example
 
+## `https://example.com?sort=price-desc&name=iphone`
 
 ```php
 <?php
@@ -15,31 +16,12 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-
     public function index(ProductFilter $productFilter)
     {
         return Product::paginationFilter($productFilter);
     }
-
 }
 ```
-
-Or you can use
-
-```php
-$products = Product::filter($productFilter)->paginationFilter();
-
-$products = Product::filter($productFilter)->get();
-
-$products = Product::filter($productFilter)->pagination();
-
-```
-
-Console command to create a filter
-
-```php arisan make:filter Product```
-
-This is what ProductFilter will look like
 
 ```php
 <?php
@@ -67,7 +49,22 @@ class ProductFilter extends QueryFilters
 }
 ```
 
-Additional methods and variables
+Or you can use
+
+```php
+$products = Product::filter($productFilter)->paginationFilter();
+
+$products = Product::filter($productFilter)->get();
+
+$products = Product::filter($productFilter)->pagination();
+
+```
+
+Console command to create a filter
+
+```php arisan make:filter Product```
+
+### Additional methods and variables
 
 ```php
 <?php
@@ -100,6 +97,8 @@ class ProductFilter extends QueryFilters
     }
 }
 ```
+
+### internal public methods
 
 ```php
 <?php
