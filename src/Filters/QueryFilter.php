@@ -68,7 +68,6 @@ abstract class QueryFilter
     {
         $this->builder = $builder;
 
-        $this->defaultSort();
         $this->sortStrategy->handle($this);
         $this->filterStrategy->handle($this);
 
@@ -82,7 +81,6 @@ abstract class QueryFilter
     {
         if (!$this->request->sort && $this->defaultSort && !$this->isChangeDefaultSort) {
             $this->isSortFromRequest = false;
-            $this->request->request->add([config('filterable-and-sortable.sort_field_name') => $this->defaultSort]);
         }
     }
 
@@ -100,9 +98,17 @@ abstract class QueryFilter
     public function setDefaultSort(string $sort = null)
     {
         if ($sort && !$this->request->{config('filterable-and-sortable.sort_field_name')}) {
-            $this->request->request->add([config('filterable-and-sortable.sort_field_name') => $sort]);
             $this->isChangeDefaultSort = true;
+            $this->defaultSort = $sort;
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getDefaultSort()
+    {
+        return $this->defaultSort;
     }
 
     /**

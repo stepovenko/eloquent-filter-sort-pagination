@@ -36,8 +36,11 @@ class SortStrategy implements SortStrategyContract
     public function handle(QueryFilter $queryFilters)
     {
         $this->init($queryFilters);
+
         if (!$queryString = $this->getSortableFieldsFromRequest()) {
-            return;
+            if (!$queryString = $queryFilters->getDefaultSort()) {
+                return;
+            }
         }
 
         $fieldsList = explode(config('filterable-and-sortable.sort_delimiter_field'), $queryString);
@@ -99,6 +102,4 @@ class SortStrategy implements SortStrategyContract
     {
         return array_merge($this->queryFilters->getSortableFields(), $this->queryFilters->getSortableFieldsLikeNumber());
     }
-
-
 }
